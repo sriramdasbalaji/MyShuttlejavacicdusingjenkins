@@ -3,31 +3,29 @@ package com.microsoft.example;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.*;
 import com.microsoft.example.models.*;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 public class FaresTest {
   
-  public static SimpleDateFormat sdf;
+  public static DateFormat defaultDF;
 
   @BeforeClass
   public static void setupDateFormat() {
-    sdf = new SimpleDateFormat("MMM d, yyyy HH:mm:ss");
+    defaultDF = DateFormat.getDateTimeInstance();
   }
 
   public Date startTime;
   public Date endTime;
   
-  @BeforeMethod
+  @Before
   public void setupStartEndTimes() throws Exception {
-    startTime = sdf.parse("Jun 3, 2009 7:03:47 AM");
-    endTime = sdf.parse("Jun 3, 2009 7:35:10 AM");      
+    startTime = defaultDF.parse("Jun 3, 2009 7:03:47 AM");
+    endTime = defaultDF.parse("Jun 3, 2009 7:35:10 AM");      
   }
   
   /**
@@ -68,16 +66,16 @@ public class FaresTest {
         startTime, endTime, 
         1000, 250, 4, 5),
       new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 4, 2009 7:00:00 AM"), sdf.parse("Jun 4, 2009 7:35:00 AM"), 
+        defaultDF.parse("Jun 4, 2009 7:00:00 AM"), defaultDF.parse("Jun 4, 2009 7:35:00 AM"), 
         1000, 250, 4, 5),
       new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 5, 2009 7:00:00 AM"), sdf.parse("Jun 5, 2009 7:35:00 AM"), 
+        defaultDF.parse("Jun 5, 2009 7:00:00 AM"), defaultDF.parse("Jun 5, 2009 7:35:00 AM"), 
         1000, 250, 4, 5),
       new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 6, 2009 7:00:00 AM"), sdf.parse("Jun 6, 2009 7:35:00 AM"), 
+        defaultDF.parse("Jun 6, 2009 7:00:00 AM"), defaultDF.parse("Jun 6, 2009 7:35:00 AM"), 
         1000, 250, 4, 5),
       new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 7, 2009 7:00:00 AM"), sdf.parse("Jun 7, 2009 7:35:00 AM"), 
+        defaultDF.parse("Jun 7, 2009 7:00:00 AM"), defaultDF.parse("Jun 7, 2009 7:35:00 AM"), 
         1000, 250, 4, 5)
     );
     
@@ -88,38 +86,9 @@ public class FaresTest {
     assertEquals(2.50f * 5, totalFeesInDollars, 0.1f);
   }
   
-  @Test
-  public void fareTotal() 
-    throws ParseException {
-
-    // Set up Fred, with five fares at the same time on consecutive days
-    // Start/end addresses don't matter
-    Employee fred = new Employee(1, "Fred", "Flintstone");
-    List<Fare> fredFares = Arrays.asList(
-      new Fare(1, 1, "START", "END", 
-        startTime, endTime, 
-        1000, 250, 4, 5),
-      new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 4, 2009 7:00:00 AM"), sdf.parse("Jun 4, 2009 7:35:00 AM"), 
-        1000, 250, 4, 5),
-      new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 5, 2009 7:00:00 AM"), sdf.parse("Jun 5, 2009 7:35:00 AM"), 
-        1000, 250, 4, 5),
-      new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 6, 2009 7:00:00 AM"), sdf.parse("Jun 6, 2009 7:35:00 AM"), 
-        1000, 250, 4, 5),
-      new Fare(1, 1, "START", "END", 
-        sdf.parse("Jun 7, 2009 7:00:00 AM"), sdf.parse("Jun 7, 2009 7:35:00 AM"), 
-        1000, 250, 4, 5)
-    );
-    
-    
-        int totalFees = fred.getTotalFare(fredFares,0); 
-        assertEquals(250 * 5, totalFees); 
-        
-        //float totalFeesInDollars = fred.getTotalFareInDollars(fredFares);
-        //assertEquals(2.50f * 5, totalFeesInDollars, 0.1f);   
-
-  }
-  
 }
+
+
+
+
+

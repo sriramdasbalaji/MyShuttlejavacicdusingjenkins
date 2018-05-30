@@ -25,12 +25,13 @@ public class DataAccess
 	private static final String DB_URL = "jdbc:mysql://db:3306/MyShuttleDb";
 	private static final String DB_USER = "user";
 	private static final String DB_PASS = "password";
-	
+
 	private static Connection theConnection;
 	static {
 		try {
 			// Bootstrap driver into JVM
 			Class.forName(DB_DRIVER);
+		Class.forName(DB_DRIVER);
 
 			String conStr = System.getenv("MYSQLCONNSTR_MyShuttleDb");
 			if (conStr == null || conStr.trim().length() == 0) {
@@ -45,7 +46,7 @@ public class DataAccess
 			throw new ExceptionInInitializerError(ex.toString());
 		}
 	}
-
+	
 	private static PreparedStatement LOGIN;
 	private static PreparedStatement FARES;
 	private static PreparedStatement GETTOTAL;
@@ -94,6 +95,8 @@ public class DataAccess
 		}
 	}
 
+
+//adding comment
 	/**
 	 * Return all the fares for a given Employee's ID #
 	 */	
