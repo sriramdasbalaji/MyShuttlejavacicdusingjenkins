@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>Dashboard</title>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
@@ -6,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="App/Modules/Core/Css/core.css">
     <link rel="stylesheet" type="text/css" href="App/Modules/Core/Css/list.css">
 </head>
+
 <body>
     <div class="container-fluid full-width-container">
         <section class="container main-content">
