@@ -118,6 +118,12 @@
       <version>1.0.4</version>
       <scope>test</scope>
     </dependency>
+       <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>applicationinsights-web</artifactId>
+        <!-- or applicationinsights-core for bare API -->
+        <version>[2.0,)</version>
+      </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -125,4 +131,11 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+    <repositories>
+       <repository>
+          <id>central</id>
+          <name>Central</name>
+          <url>http://repo1.maven.org/maven2</url>
+       </repository>
+    </repositories>
 </project>
