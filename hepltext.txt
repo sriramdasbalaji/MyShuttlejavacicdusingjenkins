@@ -1,3 +1,8 @@
 jdbc:mysql://jenkinswebapptetsyst-mysqldbserver.mysql.database.azure.com:3306/myshuttledb?useSSL=true&requireSSL=false&autoReconnect=true&user=vmadmin@jenkinswebapptetsyst-mysqldbserver&password=P2ssw0rd@123
 
 dbconnection string...poll
+
+
+ wget https://raw.githubusercontent.com/sriramdasbalaji/MyShuttlejavacicdusingjenkins/master/src/db/initData.sql
+ 
+  mysql -h myshuttledbserver.mysql.database.azure.com -u mysqldbuser@myshuttledbserver -p < initData.sql
