@@ -6,3 +6,7 @@ dbconnection string...poll
  wget https://raw.githubusercontent.com/sriramdasbalaji/MyShuttlejavacicdusingjenkins/master/src/db/initData.sql
  
   mysql -h myshuttledbserver.mysql.database.azure.com -u mysqldbuser@myshuttledbserver -p < initData.sql
+  
+  ssh -L 127.0.0.1:8080:localhost:8080 username@jenkinsserver17265.eastus.cloudapp.azure.com
+  
+  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
