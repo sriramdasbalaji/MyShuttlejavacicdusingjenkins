@@ -106,7 +106,7 @@
     "webAppName": "[concat(parameters('appDnsPrefix'), 'Web')]",
     "appInsightsName": "[concat(parameters('appDnsPrefix'), 'AppInsights')]",
     "mySqlServerName": "[concat(toLower(parameters('appDnsPrefix')), 'mysqlserver')]",
-    "mySqlDbName": "[concat(toLower(parameters('appDnsPrefix')), 'mysqldb')]"
+    "mySqlDbName": "myshuttledb"
   },
   "resources": [
     {
@@ -168,8 +168,8 @@
             "[resourceId('Microsoft.Web/sites', variables('webAppName'))]"
           ],
           "properties": {
-            "defaultConnection": {
-              "value": "[concat('Database=', variables('mySqlDbName'), ';Data Source=', variables('mySqlServerName'), '.mysql.database.azure.com;User Id=', parameters('mySqlAdminLogin'),'@', variables('mySqlServerName'),';Password=', parameters('mySqlAdminPassword'))]",
+            "MyShuttleDb": {
+                "value": "[concat('jdbc:mysql://', variables('mySqlServerName'), '.mysql.database.azure.com:3306/',variables('mySqlDbName'),'?useSSL=true&requireSSL=false&autoReconnect=true&user=', parameters('mySqlAdminLogin'),'@', variables('mySqlServerName'),'&Password=', parameters('mySqlAdminPassword'))]",
               "type": "MySql"
             }
           }
